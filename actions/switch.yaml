@@ -1,0 +1,55 @@
+---
+name: switch
+pack: mistral-dev
+runner_type: run-local-script
+description: Switch between the stackstorm/mistral and stackforge/mistral repo for development.
+enabled: true
+entry_point: switch.sh
+parameters:
+  st2_repo_root:
+    type: string
+    description: Local root path to the StackStorm repositories.
+    position: 0
+    default: /home/vagrant/projects/stackstorm
+  os_repo_root:
+    type: string
+    description: Local root path to the OpenStack/StackForge repositories.
+    position: 1
+    default: /home/vagrant/projects/openstack
+  repo:
+    enum:
+        - st2
+        - os
+    description: Swap to either the StackStorm or OpenStack/StackForge repo.
+    position: 2
+    required: true
+  branch:
+    type: string
+    description: Checkout the given branch for the repo.
+    position: 3
+    default: master
+  refresh_venv:
+    type: boolean
+    description: Rebuild the python venv if specified.
+    position: 4
+    default: false
+  venv_owner:
+    type: string
+    description: Owner of the venv directory.
+    position: 5
+    default: vagrant
+  cmd:
+    immutable: true
+    default: ""
+  sudo:
+    immutable: true
+    default: true
+  cwd:
+    immutable: true
+    default: "."
+  kwarg_op:
+    immutable: true
+    default: "--"
+  timeout:
+    type: integer
+    default: 300

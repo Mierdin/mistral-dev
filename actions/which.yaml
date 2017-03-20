@@ -1,0 +1,20 @@
+---
+name: "which"
+pack: "mistral-dev"
+runner_type: "run-local-script"
+description: "Return which mistral repo is currently set for development."
+enabled: true
+entry_point: "which.sh"
+parameters:
+  cmd:
+    immutable: true
+    default: ""
+  sudo:
+    immutable: true
+    default: true
+  cwd:
+    immutable: true
+    default: "."
+  kwarg_op:
+    immutable: true
+    default: "--"
